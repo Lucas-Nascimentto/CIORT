@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CIORT – I Curso de Imobilizações Ortopédicas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Public+Sans:wght@400;600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:light;
+  --ink:#1c1917; --brown:#6b4630; --brown-d:#4a2f20; --plaster:#d8d3cb; --bone:#efece7;
+  --bg:#efece7; --text:#1c1917; --muted:#5b534c; --card:#e3dfd8; --line:#b9b2a8;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){color-scheme:dark;--bg:#16130f;--text:#ece8e2;--muted:#b3aaa0;--card:#221d18;--line:#4a4036;}
+}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#16130f;--text:#ece8e2;--muted:#b3aaa0;--card:#221d18;--line:#4a4036;}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:400 17px/1.6 "Public Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque","Arial Black",sans-serif;margin:0;line-height:1.02}
+.wrap{max-width:960px;margin:0 auto;padding:0 22px}
+
+/* hero: faixa de atadura enrolando */
+.hero{background:var(--ink);color:var(--bone);position:relative;overflow:hidden;padding:56px 0 72px}
+.hero::before{content:"";position:absolute;inset:0;
+  background:repeating-linear-gradient(-58deg,transparent 0 46px,rgba(216,211,203,.07) 46px 50px,transparent 50px 96px,rgba(107,70,48,.35) 96px 100px);}
+.hero::after{content:"";position:absolute;left:-10%;right:-10%;bottom:-38px;height:76px;background:var(--brown);transform:rotate(-2.2deg);box-shadow:0 -14px 0 -6px var(--plaster)}
+.hero .wrap{position:relative;z-index:1}
+.liga{font-weight:600;font-size:15px;letter-spacing:.02em;color:var(--plaster);margin-bottom:44px}
+.hero h1{font-weight:800;font-size:clamp(64px,19vw,164px);letter-spacing:-.04em;color:var(--bone)}
+.hero h2{font-weight:500;font-size:clamp(22px,4.6vw,36px);margin-top:14px;max-width:18em;color:var(--plaster);line-height:1.15}
+.when{display:flex;flex-wrap:wrap;gap:12px 28px;margin:34px 0 30px;font-weight:600}
+.when span{border-left:3px solid var(--brown);padding-left:12px}
+.btn{display:inline-block;background:var(--bone);color:var(--ink);font:800 19px "Bricolage Grotesque",sans-serif;padding:16px 30px;border-radius:4px;text-decoration:none;border:2px solid var(--bone);transition:background .2s,color .2s}
+.btn:hover,.btn:focus-visible{background:var(--brown);color:var(--bone);border-color:var(--brown);outline:none}
+.btn:focus-visible{outline:3px solid var(--plaster);outline-offset:3px}
+.btn[aria-disabled="true"]{background:transparent;color:var(--plaster);border:2px dashed var(--plaster);pointer-events:none}
+
+section{padding:72px 0 8px}
+section h2{font-weight:800;font-size:clamp(32px,6vw,52px);letter-spacing:-.025em;max-width:14em}
+.lead{max-width:34em;margin:20px 0 0;color:var(--muted);font-size:19px}
+.grid{display:grid;gap:18px;margin-top:34px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.card{background:var(--card);padding:26px;border-top:6px solid var(--brown)}
+.card:nth-child(2){border-top-color:var(--ink)}
+.card:nth-child(3){border-top-color:var(--line)}
+.card h3{font-weight:800;font-size:23px;margin-bottom:10px}
+.card p{margin:0;color:var(--muted)}
+.info{display:grid;gap:0;margin-top:30px;border-top:2px solid var(--text)}
+.info div{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 20px;padding:18px 0;border-bottom:1px solid var(--line)}
+.info b{font-family:"Bricolage Grotesque",sans-serif;font-size:20px}
+.cta{margin:72px 0 0;background:var(--brown-d);color:var(--bone);padding:56px 0;text-align:left}
+.cta h2{color:var(--bone);font-size:clamp(30px,6vw,48px)}
+.cta p{color:var(--plaster);max-width:30em;margin:14px 0 26px}
+footer{background:var(--ink);color:var(--plaster);padding:26px 0 calc(26px + env(safe-area-inset-bottom,0px));font-size:14px}
+.bandage{position:fixed;top:env(safe-area-inset-top,0px);left:0;height:8px;width:0;z-index:50;background:repeating-linear-gradient(-58deg,var(--brown) 0 10px,var(--plaster) 10px 14px,var(--ink) 14px 22px,var(--plaster) 22px 26px)}
+.actions{display:flex;flex-wrap:wrap;gap:14px}
+.btn.ghost{background:transparent;color:var(--bone);border-color:var(--plaster)}
+.btn.ghost:hover,.btn.ghost:focus-visible{background:var(--plaster);color:var(--ink);border-color:var(--plaster)}
+.btn.pulse{animation:pulse 1.2s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.06)}}
+.count{display:flex;gap:10px;margin:0 0 28px;flex-wrap:wrap}
+.count div{background:rgba(239,236,231,.08);border:1px solid rgba(216,211,203,.3);min-width:74px;padding:10px 12px;text-align:center}
+.count b{display:block;font:800 34px/1 "Bricolage Grotesque",sans-serif;font-variant-numeric:tabular-nums}
+.count span{font-size:13px;color:var(--plaster)}
+.count .done{font:800 24px "Bricolage Grotesque",sans-serif}
+.card{position:relative}
+.tg{all:unset;display:flex;justify-content:space-between;align-items:center;width:100%;cursor:pointer;font:inherit}
+.tg:focus-visible{outline:3px solid var(--brown);outline-offset:4px}
+.tg::after{content:"";position:absolute;inset:0}
+.tg i{width:26px;height:26px;border:2px solid currentColor;border-radius:50%;flex:none;position:relative;margin-left:12px;transition:transform .3s}
+.tg i::before,.tg i::after{content:"";position:absolute;left:50%;top:50%;width:10px;height:2px;background:currentColor;transform:translate(-50%,-50%)}
+.tg i::after{transform:translate(-50%,-50%) rotate(90deg)}
+.card.open .tg i{transform:rotate(45deg)}
+.card .more{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s;color:var(--text)}
+.card .more>span{overflow:hidden;min-height:0}
+.card .more .in{display:block;padding-top:14px}
+.note{font:500 clamp(18px,3.6vw,24px)/1.3 Poppins,system-ui,sans-serif;color:var(--plaster);margin:20px 0 0}
+.count span,.fb,.cta p{font-family:Poppins,system-ui,sans-serif;font-weight:500}
+.count span{font-size:14px}
+.fb{font-size:17px;line-height:1.5}
+.cta p{font-size:19px;line-height:1.5}
+.card.open .more{grid-template-rows:1fr}
+.quiz{margin-top:28px;max-width:640px}
+.quiz .q{font:600 20px/1.4 "Public Sans",sans-serif;margin:0 0 16px}
+.opt{display:block;width:100%;text-align:left;font:inherit;color:var(--text);background:var(--card);border:2px solid var(--line);padding:14px 16px;margin-bottom:10px;cursor:pointer;border-radius:4px}
+.opt:hover:not(:disabled){border-color:var(--brown)}
+.opt:focus-visible{outline:3px solid var(--brown);outline-offset:2px}
+.opt:disabled{cursor:default}
+.opt.right{border-color:#4f7a45;background:rgba(79,122,69,.18)}
+.opt.wrong{border-color:#a3402e;background:rgba(163,64,46,.16)}
+.fb{font-weight:600;min-height:3em;margin:14px 0 0}
+@media (prefers-reduced-motion:reduce){.btn.pulse{animation:none}.card .more,.tg i{transition:none}}
+.tabs{display:flex;gap:10px;margin-top:30px}
+.tab{flex:1;font:800 22px "Bricolage Grotesque",sans-serif;padding:18px;border:2px solid var(--text);background:transparent;color:var(--text);cursor:pointer;border-radius:4px;transition:background .2s,color .2s}
+.tab[aria-selected="true"]{background:var(--brown);border-color:var(--brown);color:#efece7}
+.tab:focus-visible{outline:3px solid var(--brown);outline-offset:3px}
+.panel{margin-top:18px;background:var(--card);border-top:6px solid var(--brown);padding:8px 24px}
+.panel[hidden]{display:none}
+.panel ul{list-style:none;margin:0;padding:0}
+.panel li{padding:16px 0;border-bottom:1px solid var(--line);font:600 19px/1.4 "Public Sans",sans-serif;animation:rise .4s both}
+.panel li:last-child{border-bottom:0}
+.panel li:nth-child(2){animation-delay:.08s}.panel li:nth-child(3){animation-delay:.16s}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}}
+.fine{font-size:15px;color:var(--muted);margin:16px 0 0}
+.tbc{color:var(--muted);font-style:italic}
+.info span{text-align:right}
+.info a{color:inherit;text-decoration:underline;text-underline-offset:3px;font-weight:600}
+details{border-bottom:1px solid var(--line)}
+details:first-of-type{border-top:2px solid var(--text);margin-top:30px}
+summary{cursor:pointer;list-style:none;padding:18px 0;font:800 20px "Bricolage Grotesque",sans-serif;display:flex;justify-content:space-between;gap:16px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:26px;line-height:1;flex:none;transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+summary:focus-visible{outline:3px solid var(--brown);outline-offset:2px}
+details p{margin:0 0 18px;color:var(--muted);max-width:38em}
+@media (max-width:720px){.info span{text-align:left}}
+@media (prefers-reduced-motion:reduce){.panel li{animation:none}.tab,summary::after{transition:none}}
+</style>
+</head>
+<body>
+<div class="bandage" id="bandage" aria-hidden="true"></div>
+<header class="hero">
+  <div class="wrap">
+    <div class="liga">LAOT · Liga de Ortopedia e Traumatologia</div>
+    <h1>CIORT</h1>
+    <h2>I Curso de Imobilizações Ortopédicas</h2>
+    <p class="note">Aprender a imobilizar é trabalho em equipe</p>
+    <div class="when">
+      <span>14 de novembro de 2026</span>
+      <span>13h</span>
+      <span>UNEX – Centro Universitário de Excelência</span>
+    </div>
+    <div class="count" id="count" role="timer" aria-label="Contagem regressiva para o CIORT"></div>
+    <div class="actions">
+      <a class="btn" id="cta1" href="#inscricao">Inscreva-se</a>
+      <a class="btn ghost" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=CIORT%20-%20I%20Curso%20de%20Imobiliza%C3%A7%C3%B5es%20Ortop%C3%A9dicas&amp;dates=20261114T160000Z/20261114T200000Z&amp;location=UNEX%20-%20Centro%20Universit%C3%A1rio%20de%20Excel%C3%AAncia&amp;details=Organiza%C3%A7%C3%A3o%3A%20LAOT">Adicionar ao calendário</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<section>
+  <div class="wrap">
+    <h2>Imobilizar bem é coisa de equipe</h2>
+    <p class="lead">Uma torção num jogo, uma queda em casa, um atendimento de urgência: a primeira imobilização quase nunca é feita por um ortopedista. O CIORT existe para que quem estiver por perto saiba o que fazer nesse momento.</p>
+    <div class="grid">
+      <article class="card"><h3><button class="tg" aria-expanded="false">Como imobilizar<i></i></button></h3><p>Aprenda a técnica de cada imobilização, passo a passo.</p><p class="more"><span><span class="in">Imobilizar não é só enfaixar: é proteger a lesão e quem se machucou. Você vai ver como fazer isso com segurança.</span></span></p></article>
+      <article class="card"><h3><button class="tg" aria-expanded="false">Quando indicar<i></i></button></h3><p>Entenda as indicações de cada tipo e o que a lesão pede em cada situação.</p><p class="more"><span><span class="in">Cada lesão pede uma conduta. Saber quando indicar a imobilização evita atrasos no cuidado e complicações.</span></span></p></article>
+      <article class="card"><h3><button class="tg" aria-expanded="false">Para qualquer curso<i></i></button></h3><p>Estudantes de outras áreas também ajudam nesse processo. Todo mundo pode estar por perto na hora certa.</p><p class="more"><span><span class="in">Em um jogo, em casa, no trabalho ou no plantão, quem está por perto pode ajudar a proteger a lesão até o atendimento chegar.</span></span></p></article>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>O que você vai ver</h2>
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" id="t-teo" aria-selected="true" aria-controls="p-teo">Teoria</button>
+      <button class="tab" role="tab" id="t-pra" aria-selected="false" aria-controls="p-pra">Prática</button>
+    </div>
+    <div class="panel" id="p-teo" role="tabpanel" aria-labelledby="t-teo"><ul><li>Princípios da imobilização</li><li>Indicações por tipo de lesão</li><li>Sinais de alerta e complicações</li></ul></div>
+    <div class="panel" id="p-pra" role="tabpanel" aria-labelledby="t-pra" hidden><ul><li>Talas de membro superior</li><li>Talas de membro inferior</li><li>Tipoias e imobilizações improvisadas</li></ul></div>
+    
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Informações do curso</h2>
+    <div class="info">
+      <div><b>Data</b><span>14 de novembro de 2026</span></div>
+      <div><b>Horário</b><span>Início às 13h</span></div>
+      <div><b>Local</b><span>UNEX – Centro Universitário de Excelência<br><i class="tbc">Sala a confirmar</i></span></div>
+      <div><b>Organização</b><span>LAOT – Liga de Ortopedia e Traumatologia</span></div>
+      
+      
+      
+      <div><b>Certificado</b><span>Enviado por e-mail</span></div>
+      
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Perguntas frequentes</h2>
+    <details><summary>Preciso ter experiência prévia?</summary><p>Não! O CIORT foi pensado justamente para ensinar técnicas de imobilização ortopédica. Você não precisa chegar sabendo tudo, pois o curso será uma oportunidade para aprender e desenvolver suas habilidades.</p></details>
+    <details><summary>Preciso levar algum material?</summary><p>Não! Todo o material necessário para a realização do curso será disponibilizado pela organização.</p></details>
+    <details><summary>Vou receber certificado?</summary><p>Sim! Os participantes receberão certificado, que será enviado para o e-mail informado no momento da inscrição. Por isso, confira se seus dados foram preenchidos corretamente.</p></details>
+    <details><summary>Posso participar sendo de outro curso?</summary><p>Sim! O CIORT é aberto aos alunos da UNEX e ao público externo. Se você tem interesse em aprender sobre imobilizações ortopédicas, será muito bem-vindo!</p></details>
+    <details><summary>Como faço minha inscrição?</summary><p>É simples! Basta clicar no botão “Inscreva-se”, disponível nesta página. Você será direcionado ao link de inscrição para preencher seus dados e garantir sua participação no CIORT.</p></details>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Teste seu instinto</h2>
+    <p class="lead">Uma pergunta rápida, do tipo que aparece no dia a dia.</p>
+    <div class="quiz">
+      <p class="q">Durante um jogo, uma pessoa torce o tornozelo e não consegue apoiar o pé no chão. Qual a melhor primeira conduta?</p>
+      <button class="opt" data-ok="0">Pedir que levante e teste o apoio para ver se passa</button>
+      <button class="opt" data-ok="1">Imobilizar o tornozelo e encaminhar para avaliação</button>
+      <button class="opt" data-ok="0">Massagear com força para “colocar no lugar”</button>
+      <p class="fb" id="fb" role="status" aria-live="polite"></p>
+    </div>
+  </div>
+</section>
+
+<div class="cta" id="inscricao">
+  <div class="wrap">
+    <h2>Garanta sua vaga no CIORT</h2>
+    <p>A inscrição é feita pelo formulário. Leva poucos minutos.</p>
+    <a class="btn" id="cta2" href="#inscricao">Inscreva-se</a>
+  </div>
+</div>
+</main>
+
+<footer><div class="wrap">CIORT · I Curso de Imobilizações Ortopédicas · Organizado pela LAOT</div></footer>
+
+<script>
+// Cole aqui o link do Google Forms quando estiver pronto:
+var FORMS_URL = "https://forms.gle/TNdQJz39sBPMLkD16";
+["cta1","cta2"].forEach(function(id){
+  var a = document.getElementById(id);
+  if (FORMS_URL) { a.href = FORMS_URL; a.target = "_blank"; a.rel = "noopener"; }
+  else { a.textContent = "Inscrições em breve"; a.setAttribute("aria-disabled","true"); a.removeAttribute("href"); }
+});
+(function(){
+var T=new Date("2026-11-14T13:00:00-03:00").getTime(),el=document.getElementById("count");
+function pad(n){return n<10?"0"+n:""+n}
+function tick(){var d=T-Date.now();if(d<=0){el.innerHTML='<b class="done">O CIORT já começou!</b>';return}
+var s=Math.floor(d/1000),D=Math.floor(s/86400),H=Math.floor(s%86400/3600),M=Math.floor(s%3600/60),S=s%60;
+el.innerHTML=[[D,"dias"],[pad(H),"horas"],[pad(M),"min"],[pad(S),"seg"]].map(function(p){return '<div><b>'+p[0]+'</b><span>'+p[1]+'</span></div>'}).join("")}
+tick();setInterval(tick,1000);
+var bar=document.getElementById("bandage"),c2=document.getElementById("cta2");
+function prog(){var m=document.documentElement.scrollHeight-window.innerHeight,p=m>0?Math.min(1,window.scrollY/m):0;bar.style.width=(p*100)+"%";c2.classList.toggle("pulse",p>.96)}
+window.addEventListener("scroll",prog,{passive:true});prog();
+document.querySelectorAll(".tg").forEach(function(b){b.addEventListener("click",function(){var c=b.closest(".card"),o=c.classList.toggle("open");b.setAttribute("aria-expanded",o)})});
+var fb=document.getElementById("fb");
+document.querySelectorAll(".opt").forEach(function(b){b.addEventListener("click",function(){var ok=b.dataset.ok==="1";
+document.querySelectorAll(".opt").forEach(function(x){x.disabled=true;if(x.dataset.ok==="1")x.classList.add("right")});
+if(!ok)b.classList.add("wrong");
+fb.textContent=ok?"Isso! Imobilizar protege a lesão até a avaliação. É esse tipo de decisão que o CIORT ensina.":"Quase. Com dor e sem conseguir apoiar, o mais seguro é imobilizar e encaminhar. É esse tipo de decisão que o CIORT ensina."})});
+var tabs=document.querySelectorAll(".tab");
+tabs.forEach(function(t){t.addEventListener("click",function(){tabs.forEach(function(x){var on=x===t;x.setAttribute("aria-selected",on);document.getElementById(x.getAttribute("aria-controls")).hidden=!on})})});
+})();
+</script>
+</body>
+</html>
