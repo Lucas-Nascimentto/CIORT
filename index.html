@@ -131,13 +131,14 @@ details p{margin:0 0 18px;color:var(--muted);max-width:38em}
     <p class="note">Aprender a imobilizar é trabalho em equipe</p>
     <div class="when">
       <span>14 de novembro de 2026</span>
-      <span>13h</span>
+      <span>8h</span>
       <span>UNEX – Centro Universitário de Excelência</span>
     </div>
     <div class="count" id="count" role="timer" aria-label="Contagem regressiva para o CIORT"></div>
     <div class="actions">
       <a class="btn" id="cta1" href="#inscricao">Inscreva-se</a>
-      <a class="btn ghost" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=CIORT%20-%20I%20Curso%20de%20Imobiliza%C3%A7%C3%B5es%20Ortop%C3%A9dicas&amp;dates=20261114T160000Z/20261114T200000Z&amp;location=UNEX%20-%20Centro%20Universit%C3%A1rio%20de%20Excel%C3%AAncia&amp;details=Organiza%C3%A7%C3%A3o%3A%20LAOT">Adicionar ao calendário</a>
+      <a class="btn" id="lig1" href="#inscricao">Inscrição para ligantes</a>
+      <a class="btn ghost" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=CIORT%20-%20I%20Curso%20de%20Imobiliza%C3%A7%C3%B5es%20Ortop%C3%A9dicas&amp;dates=20261114T110000Z/20261114T110000Z&amp;location=UNEX%20-%20Centro%20Universit%C3%A1rio%20de%20Excel%C3%AAncia&amp;details=Organiza%C3%A7%C3%A3o%3A%20LAOT">Adicionar ao calendário</a>
     </div>
   </div>
 </header>
@@ -173,7 +174,7 @@ details p{margin:0 0 18px;color:var(--muted);max-width:38em}
     <h2>Informações do curso</h2>
     <div class="info">
       <div><b>Data</b><span>14 de novembro de 2026</span></div>
-      <div><b>Horário</b><span>Início às 13h</span></div>
+      <div><b>Horário</b><span>Início às 8h</span></div>
       <div><b>Local</b><span>UNEX – Centro Universitário de Excelência<br><i class="tbc">Sala a confirmar</i></span></div>
       <div><b>Organização</b><span>LAOT – Liga de Ortopedia e Traumatologia</span></div>
       
@@ -192,7 +193,7 @@ details p{margin:0 0 18px;color:var(--muted);max-width:38em}
     <details><summary>Preciso levar algum material?</summary><p>Não! Todo o material necessário para a realização do curso será disponibilizado pela organização.</p></details>
     <details><summary>Vou receber certificado?</summary><p>Sim! Os participantes receberão certificado, que será enviado para o e-mail informado no momento da inscrição. Por isso, confira se seus dados foram preenchidos corretamente.</p></details>
     <details><summary>Posso participar sendo de outro curso?</summary><p>Sim! O CIORT é aberto aos alunos da UNEX e ao público externo. Se você tem interesse em aprender sobre imobilizações ortopédicas, será muito bem-vindo!</p></details>
-    <details><summary>Como faço minha inscrição?</summary><p>É simples! Basta clicar no botão “Inscreva-se”, disponível nesta página. Você será direcionado ao link de inscrição para preencher seus dados e garantir sua participação no CIORT.</p></details>
+    <details><summary>Como faço minha inscrição?</summary><p>É simples! Basta clicar no botão “Inscreva-se”, disponível nesta página. Você será direcionado ao link de inscrição para preencher seus dados e garantir sua participação no CIORT. Se você é ligante de uma liga parceira, use o botão “Inscrição para ligantes”, que tem condição especial.</p></details>
   </div>
 </section>
 
@@ -214,7 +215,10 @@ details p{margin:0 0 18px;color:var(--muted);max-width:38em}
   <div class="wrap">
     <h2>Garanta sua vaga no CIORT</h2>
     <p>A inscrição é feita pelo formulário. Leva poucos minutos.</p>
-    <a class="btn" id="cta2" href="#inscricao">Inscreva-se</a>
+    <div class="actions">
+      <a class="btn" id="cta2" href="#inscricao">Inscreva-se</a>
+      <a class="btn" id="lig2" href="#inscricao">Inscrição para ligantes</a>
+    </div>
   </div>
 </div>
 </main>
@@ -229,8 +233,14 @@ var FORMS_URL = "https://forms.gle/TNdQJz39sBPMLkD16";
   if (FORMS_URL) { a.href = FORMS_URL; a.target = "_blank"; a.rel = "noopener"; }
   else { a.textContent = "Inscrições em breve"; a.setAttribute("aria-disabled","true"); a.removeAttribute("href"); }
 });
+var LIGANTES_URL = "https://forms.gle/YdbzgBJzcjwa7mTk6"; // Forms com desconto para ligantes
+["lig1","lig2"].forEach(function(id){
+  var a = document.getElementById(id);
+  if (LIGANTES_URL) { a.href = LIGANTES_URL; a.target = "_blank"; a.rel = "noopener"; }
+  else { a.textContent = "Inscrição para ligantes em breve"; a.setAttribute("aria-disabled","true"); a.removeAttribute("href"); }
+});
 (function(){
-var T=new Date("2026-11-14T13:00:00-03:00").getTime(),el=document.getElementById("count");
+var T=new Date("2026-11-14T08:00:00-03:00").getTime(),el=document.getElementById("count");
 function pad(n){return n<10?"0"+n:""+n}
 function tick(){var d=T-Date.now();if(d<=0){el.innerHTML='<b class="done">O CIORT já começou!</b>';return}
 var s=Math.floor(d/1000),D=Math.floor(s/86400),H=Math.floor(s%86400/3600),M=Math.floor(s%3600/60),S=s%60;
